@@ -2,7 +2,9 @@
  *  Partner(s) Name: 
  *	Lab Section:
  *	Assignment: Lab #7  Exercise #4
- *	Exercise Description: [optional - include for your own benefit]
+ *	Exercise Description: Since the isntructions were not clear whether none to almost no light should light 0 or 1 led, I have included the code for both cases.
+ *				The first chunk of code is to light 0 LEDs when there is no to almost no light.
+ *				The second chunk of code is to light B0 when there is no to almost no light.
  *	Demo Link:
  *
  *	I acknowledge all content contained herein, excluding template or example
@@ -32,8 +34,7 @@ int main(void) {
 		unsigned short input = ADC;
 		unsigned short tmpB = 0x00;
 		
-		// 0 = off
-/*
+			// All LEDs off when there is no to almost no light
 		if (input >= (photo_MAX - (threshold_diff * 7))) {
 			tmpB = (tmpB << 1) | 0x01;
 		}
@@ -58,7 +59,8 @@ int main(void) {
 		if (input >= photo_MAX) {
 			tmpB = (tmpB << 1) | 0x01;
 		}
-*/
+
+		/*	// Lighting B0 if there is no to almost no light
 		if (input >= (threshold_diff * 0)) {
 			tmpB = (tmpB << 1) | 0x01;
 		}
@@ -83,7 +85,7 @@ int main(void) {
 		if (input >= (threshold_diff * 7)) {
 			tmpB = (tmpB << 1) | 0x01;
 		}
-		
+		*/
 		PORTB = tmpB;
 	}
 	return 1;
